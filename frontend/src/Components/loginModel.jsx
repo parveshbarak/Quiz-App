@@ -2,7 +2,7 @@ import React from "react";
 
 const LoginModel = ({closeLoginForm , handleSubmit}) => {
 	return (
-		<div className="login-form" tabIndex="1" onBlur={closeLoginForm}>
+		<div className="login-form" tabIndex="1" autoFocus ={true} onBlur={closeLoginForm}>
 			<div className="title">Sign In</div>
 			<div className="form">
 				<form onSubmit={handleSubmit}>

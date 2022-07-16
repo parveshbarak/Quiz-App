@@ -13,13 +13,16 @@ code {
 /* Css For the Home page */
 
 body {
-  background-color: #0098b5;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
-
+.home-body{
+  background-color: #0098b5;
+  height: 100vh;
+  width: 100vw;
+}
 /* Navbar CSS */
 
 .navbar {
