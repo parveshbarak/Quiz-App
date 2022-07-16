@@ -1,0 +1,23 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parveshbarak/Quiz-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parveshbarak/Quiz-App/issues"
+  },
+  "homepage": "https://github.com/parveshbarak/Quiz-App#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
