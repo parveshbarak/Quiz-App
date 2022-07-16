@@ -1,0 +1,44 @@
+.quiz-create-container {
+    background-color: lightgreen;
+    position: relative;
+    height: 100vh;
+}
+
+.quiz-container,
+.question-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    width: 50%;
+    height: 500px;
+    background-color: whitesmoke;
+    aspect-ratio: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19),
+        0 0 100vmax 100vmax rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+.question-container {
+    height: 580px;
+    transform: translate(-50%, -60%);
+}
+
+.question-container .button-next,
+.quiz-container .button-next {
+    background-color: dodgerblue;
+    color: black;
+    margin-left: 85%;
+    font-size: 1rem;
+}
+
+#dis {
+    height: 300px;
+    resize: none;
+}
+
+.question-header {
+    margin: 0 auto;
+    width: 40%;
+}

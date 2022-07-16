@@ -113,12 +113,12 @@ body {
 }
 
 .signUp-form{
-  height: 350px;
+  height: 450px;
 }
 input[type="text"],
 input[type="password"],
 input[type ='email'] {
-  height: 25px;
+  height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -158,3 +158,5 @@ input[type="submit"]:hover {
   gap: 8px;
   margin: 10px;
 }
+
+
