@@ -1,6 +1,6 @@
 import React from 'react'
-import CreateQuiz from './Pages/CreateQuiz'
-import Home from './Pages/Home'
+import CreateQuiz from './Pages/createQuiz'
+import Home from './Pages/home'
 
 
 const App = () => {

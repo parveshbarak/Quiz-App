@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import NavBar from '../Components/navBar'
 
 const CreateQuiz = () => {
   return (
     <div>
-    <Navbar/>
+    <NavBar/>
       <div className='container'>
         <form>
           <div class='form-group'>

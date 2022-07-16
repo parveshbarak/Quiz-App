@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import NavBar from '../Components/navBar'
 
-const Dashboard = () => {
+const DashBoard = () => {
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <div className='row'>
         <div className='col-md-3 profile-section'>
           <div class='card text-white bg-success mb-3'>
@@ -31,4 +31,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashBoard
