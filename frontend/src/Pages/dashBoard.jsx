@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const DashBoard = () => {
   return (
-    <div>
+    <div className='pt-5 pe-5'>
       <div className='row'>
         <div className='col-md-3 profile-section'>
           <div class='card text-white bg-success mb-3'>
@@ -13,12 +13,11 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        <div className='col-md-9 quiz-list-section'>
-          <div class='card create-newQuiz-btn'>
-            <Link to="/createquiz" class="btn-primary btn-lg create-quiz-btn">Create  a new Quiz</Link>
-          </div>
-          <h1 className='quiz-list-heading'> Recent Quizes </h1>
-          <div class='card quiz-list-card'>
+        <div className='col-md-9'>
+        <Link to="/createquiz" class=" btn-primary btn-lg text-decoration-none float-end">Create  a new Quiz</Link>
+          
+          <h1 className='text-center p-3 mt-5'> Recent Quizes </h1>
+          <div class='card'>
             <div class='card-header'>Quiz-1</div>
             <div class='card-body'>
               <h5>Name of Quiz</h5> <p>X participant</p> <button>View</button>

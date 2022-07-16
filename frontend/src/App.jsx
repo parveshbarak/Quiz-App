@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import NavBar from './Components/navBar'
 import LoginModel from "./Components/loginModel";
 import RegisterModel from "./Components/registerModel";
+import QuizQuestions from './Components/quizQuestions'
 
 const App = () => {
   const [activeLoginForm, setactiveLoginForm] = useState(false)
@@ -70,6 +71,7 @@ const App = () => {
           <Route path='/dashboard' element={<DashBoard />} />
           <Route path='/quiz' element={<Quiz />} />
           <Route path='/createquiz' element={<CreateQuiz />} />
+          <Route path='/quizQuestions' element={<QuizQuestions />} />
         </Routes>
       </main>
     </BrowserRouter>

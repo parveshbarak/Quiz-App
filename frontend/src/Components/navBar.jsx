@@ -1,15 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import { isAuth, logOut } from '../utils'
 import { Link } from 'react-router-dom'
 
 const NavBar = ({ handleLogin, handleSignup }) => {
-  const [isloggedin, setIsloggedin] = useState(false)
-  useEffect(() => {
-    if (isAuth()) {
-      setIsloggedin(true)
-    }
-  }, [isloggedin])
-
   return (
     <div>
       <div className='navbar'>
@@ -19,7 +12,7 @@ const NavBar = ({ handleLogin, handleSignup }) => {
           </Link>
         </h1>
         <div className='btn-container'>
-          {!isloggedin && (
+          {!isAuth() && (
             <Fragment>
               <button className='btn login-btn' onClick={handleLogin}>
                 Login
@@ -29,7 +22,7 @@ const NavBar = ({ handleLogin, handleSignup }) => {
               </button>
             </Fragment>
           )}
-          {isloggedin && (
+          {isAuth() && (
             <button className='btn signup-btn' onClick={logOut}>
               {' '}
               Logout{' '}
