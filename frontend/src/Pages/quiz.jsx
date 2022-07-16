@@ -1,11 +1,8 @@
 import React from 'react'
-import NavBar from '../Components/navBar'
-import '../Styles/quiz.css'
 
 const Quiz = () => {
   return (
     <div>
-      <NavBar />
       <div className='container'>
         <div className='quiz'>
           {/*

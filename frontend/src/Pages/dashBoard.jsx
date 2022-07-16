@@ -1,10 +1,9 @@
 import React from 'react'
-import NavBar from '../Components/navBar'
+import { Link } from 'react-router-dom'
 
 const DashBoard = () => {
   return (
     <div>
-      <NavBar />
       <div className='row'>
         <div className='col-md-3 profile-section'>
           <div class='card text-white bg-success mb-3'>
@@ -16,7 +15,7 @@ const DashBoard = () => {
         </div>
         <div className='col-md-9 quiz-list-section'>
           <div class='card create-newQuiz-btn'>
-            <button type="button" class="btn btn-primary btn-lg">Create  a new Quiz</button>
+            <Link to="/createquiz" class="btn-primary btn-lg create-quiz-btn">Create  a new Quiz</Link>
           </div>
           <h1 className='quiz-list-heading'> Recent Quizes </h1>
           <div class='card quiz-list-card'>

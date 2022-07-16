@@ -56,6 +56,10 @@ body {
 .quiz-list-section .create-newQuiz-btn {
   margin: 3rem;
 }
+.quiz-list-section .create-newQuiz-btn .create-quiz-btn {
+  padding-left: 40%;
+  text-decoration: none;
+}
 .quiz-list-section .quiz-list-card {
   margin: 3rem;
 }

@@ -1,38 +1,83 @@
-import React from "react";
+import React from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { saveInLocalStorage } from '../utils'
+import { toast } from 'react-toastify'
 
-const RegisterModel = ({closeRegisterForm ,renderErrorMessage , handleSubmit}) => {
-	return (
-		<div className="signUp-form" tabIndex="1" autoFocus ={true} onBlur={closeRegisterForm}>
-			<div className="title">Sign Up</div>
-			<div className="form">
-				<form onSubmit={handleSubmit}>
-					<div className="input-container">
-						<label>First Name </label>
-						<input type="text" name="fname" required />
-						{renderErrorMessage("fname")}
-					</div>
-                    <div className="input-container">
-						<label>Last Name </label>
-						<input type="text" name="lname" required />
-						{renderErrorMessage("lname")}
-					</div>
-                    <div className="input-container">
-						<label>Email </label>
-						<input type="email" name="email" required />
-						{renderErrorMessage("email")}
-					</div>
-					<div className="input-container">
-						<label>Password </label>
-						<input type="password" name="pass" required />
-						{renderErrorMessage("pass")}
-					</div>
-					<div className="button-container">
-						<input type="submit" />
-					</div>
-				</form>
-			</div>
-		</div>
-	);
-};
+const RegisterModel = ({ closeRegisterForm, renderErrorMessage }) => {
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
 
-export default RegisterModel;
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const data = await axios.post('http://localhost:8080/auth/register', {
+        name,
+        email,
+        password,
+      })
+      saveInLocalStorage(data.data.data)
+      window.location.reload()
+    } catch (error) {
+      console.log(error.message)
+      toast.error(error.message)
+    }
+  }
+
+  return (
+    <div
+      className='signUp-form'
+      tabIndex='1'
+      autoFocus={true}
+      onBlur={closeRegisterForm}
+    >
+      <div className='title'>Sign Up</div>
+      <div className='form'>
+        <form onSubmit={handleSubmit}>
+          <div className='input-container'>
+            <label>Name </label>
+            <input
+              type='text'
+              name='name'
+              onChange={(e) => {
+                setName(e.target.value)
+              }}
+              required
+            />
+            {renderErrorMessage('name')}
+          </div>
+          <div className='input-container'>
+            <label>Email </label>
+            <input
+              type='email'
+              name='email'
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
+              required
+            />
+            {renderErrorMessage('email')}
+          </div>
+          <div className='input-container'>
+            <label>Password </label>
+            <input
+              type='password'
+              name='pass'
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
+              required
+            />
+            {renderErrorMessage('pass')}
+          </div>
+          <div className='button-container'>
+            <input type='submit' />
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default RegisterModel
