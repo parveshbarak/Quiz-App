@@ -8,15 +8,9 @@ const responseSchema = new mongoose.Schema(
       ref: 'Quiz',
       required: true,
     },
-    user: {
-      name: {
-        type: String,
-        required: true,
-      },
-      email: {
-        type: String,
-        required: true,
-      },
+    username: {
+      type: String,
+      required: true,
     },
     browser: {
       type: String,
