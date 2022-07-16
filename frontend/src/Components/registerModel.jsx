@@ -2,7 +2,7 @@ import React from "react";
 
 const RegisterModel = ({closeRegisterForm ,renderErrorMessage , handleSubmit}) => {
 	return (
-		<div className="signUp-form" tabIndex="1" onBlur={closeRegisterForm}>
+		<div className="signUp-form" tabIndex="1" autoFocus ={true} onBlur={closeRegisterForm}>
 			<div className="title">Sign Up</div>
 			<div className="form">
 				<form onSubmit={handleSubmit}>
