@@ -10,21 +10,19 @@ code {
     monospace;
 }
 
- /* Css For the Home page */
+/* Css For the Home page */
 
 body {
-  background-color: #0098b5;
-  color: whitesmoke;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
-.home-inCenter {
-  margin-top: 10rem;
-  margin-left: 30%;
-  font-size: 2.5em;
+.home-body{
+  background-color: #0098b5;
+  height: 100vh;
+  width: 100vw;
 }
-
 /* Navbar CSS */
 
 .navbar {
@@ -32,3 +30,137 @@ body {
   color: black;
   z-index: 1;
 }
+
+
+
+/* Dashboard CSS */
+
+.profile-section .card-header {
+  font-size: xx-large;
+}
+.profile-section .card {
+  height: 100vh;
+}
+
+.quiz-list-section .quiz-list-heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.quiz-list-section .quiz-list-card .card-header {
+  font-size: x-large;
+}
+.quiz-list-section .quiz-list-card .card-body {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz-list-section .create-newQuiz-btn {
+  margin: 3rem;
+}
+.quiz-list-section .create-newQuiz-btn .create-quiz-btn {
+  padding-left: 40%;
+  text-decoration: none;
+}
+.quiz-list-section .quiz-list-card {
+  margin: 3rem;
+}
+
+/* CreateQuiz CSS */
+
+.addQuestions {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  min-height: 100px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .header {
+  color: rgb(78, 77, 67);
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 10px;
+  background-color: dodgerblue;
+  border: 1px solid black;
+  width: 100px;
+  aspect-ratio: 2/1;
+  margin-right: 10px;
+}
+
+
+/* css for body */
+.container-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color : whitesmoke;
+}
+
+/* login */
+.login-form ,.signUp-form{
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height : 300px;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50% ,-50%);
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+              0 6px 20px 0 rgba(0, 0, 0, 0.19),
+              0 0   100vmax 100vmax rgba(0, 0, 0, 0.19);
+}
+
+.signUp-form{
+  height: 450px;
+}
+input[type="text"],
+input[type="password"],
+input[type ='email'] {
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #01d28e;
+  border: 1px solid #01d28e;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+  background: #6cf0c2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+

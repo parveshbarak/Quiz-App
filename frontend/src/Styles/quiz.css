@@ -1,0 +1,93 @@
+.quiz .quizDescription h1 {
+    text-align: center;
+    padding-top: 1rem;
+}
+.quiz .quizDescription p {
+    padding: 2rem;
+}
+
+.quiz .quizDescription {
+    background-color: beige;
+    border: 0.5px rgb(197, 196, 196);
+    margin-bottom: 2rem;
+}
+
+.quizQuestions .question .ques {
+    display: flex;
+}
+.quizQuestions .question .ques  h5{
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+}
+.quizQuestions .options .option {
+    padding-left: 5rem;
+}
+
+.quizQuestions .question {
+    background-color: rgb(250, 250, 239);
+    border: 0.5px rgb(197, 196, 196);
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.quizQuestions {
+    height: 65vh;
+    overflow-y: scroll;
+}
+
+.quiz .question .question-no{
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz .question .question-no  .ques-no{
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+}
+
+.quiz .question .question-no  .timer{
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+}
+
+.quiz .question .question-name {
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+    box-shadow: 5rem;
+}
+
+.quiz .question .option-req {
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+}
+
+.quiz .question .options {
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+}
+
+
+.quiz .question .options .option {
+    border: 0.5px solid whitesmoke;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgb(241, 238, 238);
+}
+
+.quiz {
+    border: 0.5px solid whitesmoke;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    /* opacity: 0.8; */
+}
