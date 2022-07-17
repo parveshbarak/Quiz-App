@@ -8,6 +8,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 const DashBoard = () => {
   const [quizes, setQuizes] = useState([])
   const [quizDetail, setQuizDetail] = useState('')
+  const [result, setResult] = useState([])
+  const [sortDirection, setSortDirection] = useState(false)
 
   const getQuizes = async () => {
     try {
@@ -41,12 +43,33 @@ const DashBoard = () => {
       )
       console.log('res', res.data.data.quiz.title)
       setQuizDetail(res.data.data)
+      setResult(res.data.data.responses)
     } catch (e) {
       toast.error(e.message)
     }
   }
 
-  console.log(quizDetail)
+  const filterUser = ()=>{
+      let temp = result;
+      if(sortDirection) temp = temp.sort((a , b) => a.username > b.username)
+      else temp = temp.sort((a , b) => a.username < b.username)
+      setResult(temp);
+      setSortDirection(!sortDirection);
+  }
+  const sortWrong = (event)=>{
+     let temp = result;
+     if(sortDirection) temp = temp.sort((a , b) => a.score.wrong > b.score.wrong)
+     else temp = temp.sort((a , b) => a.score.wrong < b.score.wrong)
+     setResult(temp);
+     setSortDirection(!sortDirection);
+  }
+  const sortCorrect = ()=>{
+     let temp = result;
+     if(sortDirection) temp = temp.sort((a , b) => a.score.correct > b.score.correct)
+     else temp = temp.sort((a , b) => a.score.correct < b.score.correct)
+     setResult(temp);
+     setSortDirection(!sortDirection);
+  }
 
   return (
     <div className='pt-5 pe-5'>
@@ -108,7 +131,32 @@ const DashBoard = () => {
                 </CopyToClipboard>
               )}
             </div>
+          
+          
           </div>
+         { result.length!==0 && <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" onClick={(event)=>filterUser(event)}>UserName <i class={`bi bi-arrow-${(sortDirection ? 'up' : 'down')}`}></i></th>
+                <th scope="col" onClick = {event=>sortWrong(event)}>Wrong Answer <i class={`bi bi-arrow-${(sortDirection ? 'up' : 'down')}`}></i></th>
+                <th scope="col" onClick = {event=>sortCorrect(event)}>Correct Answer <i class={`bi bi-arrow-${(sortDirection ? 'up' : 'down')}`}></i></th>
+              </tr>
+            </thead>
+            <tbody>
+            {result.map((obj , i)=>{
+              return (
+                <tr key = {i}>
+                <th scope="row">{i+1}</th>
+                <td>{obj.username}</td>
+                <td>{obj.score.wrong}</td>
+                <td>{obj.score.correct}</td>
+              </tr>
+              )
+            })}
+            </tbody>
+          </table>
+         }
         </div>
       </div>
     </div>
