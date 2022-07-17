@@ -13,68 +13,96 @@ const Quiz = () => {
   const navigate = useNavigate()
   const params = useParams()
 
+
+  function fnBrowserDetect () {
+    let userAgent = navigator.userAgent;
+    let browserName='chrome';
+    if (navigator.brave && navigator.brave.isBrave() || false) {
+      browserName = 'brave'
+    }
+    else if (userAgent.match(/chrome|chromium|crios/i)) {
+      browserName = 'chrome';
+    } else if (userAgent.match(/firefox|fxios/i)) {
+      browserName = 'firefox';
+    } else if (userAgent.match(/safari/i)) {
+      browserName = 'safari';
+    } else if (userAgent.match(/opr\//i)) {
+      browserName = 'opera';
+    }
+    return browserName;
+  }
+
   const startQuiz = async (e) => {
     e.preventDefault()
-    setIsQuestions(true)
     try {
+      const {id, authorId} = params
       const config = {
         headers: {
           'login-token': getToken(),
         },
       }
-      const res = await axios.get(
-        `http://localhost:8080/quiz/${id}/author/${authorId}`,
-        config
-      )
-      const username = res.data.data[0].title;
-      setQuizName(username)
-      setQuizQuestions(res.data.data[0].questions)
-      setIsQuestions(true)
-      const {id, authorId} = params
       const data = {
         quizId: id,
-        username: username,
-        "browser": "brave"
+        username: name,
+        "browser": fnBrowserDetect()
       }
-      await axios.post(
+      const response = await axios.post(
         `http://localhost:8080/response/register`,
         data,
         config
       )
+      const res = await axios.get(
+        `http://localhost:8080/quiz/${id}/author/${authorId}`,
+        config
+      )
+      const quizname = res.data.data[0].title;
+      setQuizName(quizname)
+      const quesArray = res.data.data[0].questions
+      quesArray.sort(() => Math.random() - 0.5);
+      setQuizQuestions(quesArray)
+      setIsQuestions(true)
     } catch (e) {
-      toast.error(e.message)
+      toast.error(e.response.data.msg)
     }
   }
 
   const submitQuiz = async (e) => {
     e.preventDefault()
     const {id, authorId} = params
-    const data = {
-      quizId: id,
-      username: name,
-      response: quizResponses
-    }
     try {
       const config = {
         headers: {
           'login-token': getToken(),
         },
       }
-      const res = await axios.post(
+      const data = {
+        quizId: id,
+        username: name,
+        response: quizResponses
+      }
+      console.log('data', data)
+      const res = await axios.patch(
         'http://localhost:8080/response/submit',
         data,
         config
       )
+      console.log('res', res)
       toast.success('Response Recorded Successfully!')
-      navigate('/home')
+      navigate('/')
     } catch (e) {
-      toast.error(e.reponse.data.msg)
+      toast.error(e.message)
     }
   }
   
   const recordResponse = (e) => {
-    e.preventDefault()
-    
+    const ans = e.target.value
+    const quesId = e.target.name
+    console.log(ans, quesId)
+    const newResponse = {
+      quesId : quesId,
+      ans : ans
+    }
+    setQuizResponses([...quizResponses, newResponse])
   }
 
   return (
@@ -139,67 +167,24 @@ const Quiz = () => {
             <div className='card m-1' key={ques._id}>
               <div className='card-body'>
               <h5>{ques.questionText}</h5>
-                <div className='ps-4'>
-                  <div className='form-check'>
+                <div className='ps-4' onClick={recordResponse}>
+                  {ques.options.map(option => (
+                    <div className='form-check' id = {ques._id} key = {option._id}>
                     <input
                       className='form-check-input'
                       type='radio'
-                      name='option'
-                      id={ques.options[0].optionId}
-                      value={ques.options[0].optionText}
+                      name={ques._id}
+                      id={option.optionId}
+                      value={option.optionText}
                     />
                     <label
                       className='form-check-label'
-                      htmlFor={ques.options[0].optionId}
+                      htmlFor={option.optionId}
                     >
-                      {ques.options[0].optionText}
+                      {option.optionText}
                     </label>
                   </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[1].optionId}
-                      value={ques.options[1].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[1].optionId}
-                    >
-                      {ques.options[1].optionText}
-                    </label>
-                  </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[2].optionId}
-                      value={ques.options[2].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[2].optionId}
-                    >
-                      {ques.options[2].optionText}
-                    </label>
-                  </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[3].optionText}
-                      value={ques.options[3].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[3].optionId}
-                    >
-                      {ques.options[3].optionText}
-                    </label>
-                  </div>
+          ))}
                 </div>
               </div>
             </div>
