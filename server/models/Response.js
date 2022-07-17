@@ -19,16 +19,16 @@ const responseSchema = new mongoose.Schema(
     score: {
       correct: {
         type: Number,
-        required: true,
+        default: 0,
       },
       wrong: {
         type: Number,
-        required: true,
+        default: 0,
       },
     },
     time: {
-      type: Number,
-      required: true,
+      type: String,
+      default: '',
     },
     feedback: {
       description: { type: String },
