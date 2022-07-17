@@ -11,6 +11,7 @@ const mongodb = require('./config/db');
  */
 const AuthRoute = require('./routes/AuthRoute');
 const QuizRoute = require('./routes/QuizRoute');
+const ResponseRoute = require('./routes/ResponseRoute');
 
 app.use(cors());
 
@@ -33,6 +34,7 @@ app.get('/api', (req, res) => {
 
 app.use('/auth', AuthRoute);
 app.use('/quiz', QuizRoute);
+app.use('/response', ResponseRoute);
 
 /**
  * @description Page NOT FOUND Error

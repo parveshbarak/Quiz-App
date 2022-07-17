@@ -3,8 +3,8 @@
 const router = require('express').Router();
 
 const ResponseController = require('../controllers/ResponseController');
-const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
-router.route('/submit').post(ResponseController.submitResponse);
+router.route('/register').post(ResponseController.register);
+router.route('/submit').patch(ResponseController.submitResponse);
 
 module.exports = router;
