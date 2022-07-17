@@ -16,7 +16,7 @@ const DashBoard = () => {
         <div className='col-md-9'>
         <Link to="/createquiz" class=" btn-primary btn-lg text-decoration-none float-end">Create  a new Quiz</Link>
           
-          <h1 className='text-center p-3 mt-5'> Recent Quizes </h1>
+          <h1 className='text-center p-2 mt-5'  id='small-header'> Recent Quizes </h1>
           <div class='card'>
             <div class='card-header'>Quiz-1</div>
             <div class='card-body'>
