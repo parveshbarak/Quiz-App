@@ -45,7 +45,7 @@ const DashBoard = () => {
     <div className='pt-5 pe-5'>
       <div className='row ms-1'>
         <div className='col-md-3'>
-          <h1 className='text-center p-5'>Recenet Quizes</h1>
+          <h1 className='text-center p-5 small-header'>Recent Quizes</h1>
           {quizes.map((quiz) => (
             <div className='card mb-3' key={quiz._id}>
               <div className='card-body'>
@@ -68,7 +68,7 @@ const DashBoard = () => {
           >
             Create a new Quiz
           </Link>
-          <h1 className='text-center p-4 mt-5'> Quiz Name </h1>
+          <h1 className='text-center p-4 mt-3 small-header'> Quiz Name </h1>
           <div className='card'>
             <div className='card-header'>Quiz-1</div>
             <div className='card-body'>
