@@ -190,10 +190,12 @@ const CreateQuiz = () => {
                     onChange={(e) => setOption4(e.target.value)}
                   />
                 </div>
+                <label htmlFor='select-ans'>Select Correct Answer</label>
                 <select
                   className='form-select mb-3'
                   aria-label='Default select example'
                   value={option5}
+                  id = 'select-ans'
                   onChange={(e) => setOption5(e.target.value)}
                 >
                   <option value='option1'>{option1}</option>

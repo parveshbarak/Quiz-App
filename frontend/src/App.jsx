@@ -68,7 +68,7 @@ const App = () => {
         <ToastContainer />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/dashboard' element={<DashBoard />} />
+          <Route path='/dashboard' element={<DashBoard />} exact/>
           <Route path='/quiz' element={<Quiz />} />
           <Route path='/createquiz' element={<CreateQuiz />} />
           <Route path='/quizQuestions' element={<QuizQuestions />} />
