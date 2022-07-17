@@ -89,6 +89,7 @@ const QuizController = {
         description: 1,
         'questions.questionText': 1,
         'questions.options': 1,
+        'questions._id': 1,
       };
       const data = await QuizServices.getData(filter, project);
       if (data.length > 0) {
