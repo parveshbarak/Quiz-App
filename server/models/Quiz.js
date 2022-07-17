@@ -40,7 +40,7 @@ const quizSchema = mongoose.Schema(
     },
     publish: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   { timestamps: true }

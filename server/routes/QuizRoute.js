@@ -12,4 +12,6 @@ router
   .route('/:id/responses')
   .get(AuthMiddleware.protect, QuizController.getQuizWithResponse);
 
+router.route('/:id/author/:authorId').get(QuizController.getQuizForm);
+
 module.exports = router;

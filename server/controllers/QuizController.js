@@ -77,6 +77,34 @@ const QuizController = {
       return res.status(500).json(response);
     }
   },
+  getQuizForm: async function (req, res) {
+    try {
+      const filter = {
+        authorId: req.params.authorId,
+        _id: req.params.id,
+        endTime: { $gt: new Date() },
+      };
+      const project = {
+        title: 1,
+        description: 1,
+        questions: 1,
+      };
+      const data = await QuizServices.getData(filter, project);
+      const response = {
+        success: 1,
+        msg: 'Quiz for attempt',
+        data: data,
+      };
+      return res.status(200).json(response);
+    } catch (e) {
+      const response = {
+        success: 0,
+        msg: 'Server error',
+        error: e.message,
+      };
+      return res.status(500).json(response);
+    }
+  },
 };
 
 module.exports = QuizController;

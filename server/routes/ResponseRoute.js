@@ -7,6 +7,4 @@ const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
 router.route('/submit').post(ResponseController.submitResponse);
 
-router.route('/quizid');
-
 module.exports = router;
