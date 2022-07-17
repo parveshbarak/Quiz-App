@@ -10,6 +10,7 @@ import NavBar from './Components/navBar'
 import LoginModel from "./Components/loginModel";
 import RegisterModel from "./Components/registerModel";
 import QuizQuestions from './Components/quizQuestions'
+import NotFound from "./Pages/NotFound";
 
 const App = () => {
   const [activeLoginForm, setactiveLoginForm] = useState(false)
@@ -72,6 +73,7 @@ const App = () => {
           <Route path='/quiz/:id/author/:authorId' element={<Quiz />} />
           <Route path='/createquiz' element={<CreateQuiz />} />
           <Route path='/quizQuestions' element={<QuizQuestions />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
     </BrowserRouter>
