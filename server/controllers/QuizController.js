@@ -87,15 +87,23 @@ const QuizController = {
       const project = {
         title: 1,
         description: 1,
-        questions: 1,
+        'questions.questionText': 1,
+        'questions.options': 1,
       };
       const data = await QuizServices.getData(filter, project);
+      if (data.length > 0) {
+        const response = {
+          success: 1,
+          msg: 'Quiz for attempt',
+          data: data,
+        };
+        return res.status(200).json(response);
+      }
       const response = {
-        success: 1,
-        msg: 'Quiz for attempt',
-        data: data,
+        success: 0,
+        msg: 'Quiz Expired',
       };
-      return res.status(200).json(response);
+      return res.status(404).json(response);
     } catch (e) {
       const response = {
         success: 0,
