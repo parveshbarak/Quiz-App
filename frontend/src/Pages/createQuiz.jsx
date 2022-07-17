@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateQuiz = () => {
   const [qNO, setQNO] = useState(0)
-  const [title, setTitle] = useState()
+  const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [startTime, setstartDate] = useState('')
   const [endTime, setendDate] = useState('')
@@ -18,18 +18,54 @@ const CreateQuiz = () => {
   const [option4, setOption4] = useState('')
   const [option5, setOption5] = useState('')
   const navigate = useNavigate()
+
+  const handleDates = (event)=>{
+    event.preventDefault();
+    try{
+      let st = new Date(startTime).toISOString();
+      let et = new Date(endTime).toISOString();
+       if(st >= et) {
+        toast.error(`Please select a valid time interval`);
+        return;
+      }
+    }
+    catch(error){
+      toast.error(`Please select dates`);
+      return;
+    }
+    
+    console.log(title , description);
+    if(title.trim().length === 0){
+      toast.error(`Please select title`);
+      return;
+    }
+    if(description.trim().length === 0){
+      toast.error(`Please add description`);
+      return
+    }
+    setQNO(1);
+
+  }
   const addHandler = (e) => {
     e.preventDefault()
     const questions = {
       questionText: quesText,
       options: [
-        { optionId: 'op1', optionText: option1 },
-        { optionId: 'op2', optionText: option2 },
-        { optionId: 'op3', optionText: option3 },
-        { optionId: 'op4', optionText: option4 },
+        { optionId: 'op1', optionText: option1.trim() },
+        { optionId: 'op2', optionText: option2.trim() },
+        { optionId: 'op3', optionText: option3.trim() },
+        { optionId: 'op4', optionText: option4.trim() },
       ],
       correctans: option5,
     }
+    let flag = false
+    questions.options.forEach(data=>{
+        if(data.optionText.length === 0){
+          toast.error(`${data.optionId} can not be empty`)
+          flag = true;
+        }
+    });
+    if(flag) return ;
     setQues([...ques, questions])
     setQuesText('')
     setOption1('')
@@ -64,7 +100,7 @@ const CreateQuiz = () => {
       toast.success('Quiz published')
       navigate('/dashboard')
     } catch (e) {
-      toast.error(e.message)
+      toast.error(e.reponse.data.msg)
     }
   }
 
@@ -126,9 +162,7 @@ const CreateQuiz = () => {
                 </div>
                 <button
                   className='btn btn-outline-primary float-end'
-                  onClick={() => {
-                    setQNO(1)
-                  }}
+                  onClick={(event) => {handleDates(event)}}
                 >
                   Next
                 </button>
