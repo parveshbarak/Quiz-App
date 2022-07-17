@@ -15,6 +15,7 @@ const Quiz = () => {
 
   const startQuiz = async (e) => {
     e.preventDefault()
+    const {id, authorId} = params
     setIsQuestions(true)
     try {
       const config = {
@@ -22,15 +23,11 @@ const Quiz = () => {
           'login-token': getToken(),
         },
       }
-      const res = await axios.get(
-        `http://localhost:8080/quiz/${id}/author/${authorId}`,
-        config
-      )
+      const res = await axios.get(`http://localhost:8080/quiz/${id}/author/${authorId}`,config)
       const username = res.data.data[0].title;
       setQuizName(username)
       setQuizQuestions(res.data.data[0].questions)
       setIsQuestions(true)
-      const {id, authorId} = params
       const data = {
         quizId: id,
         username: username,
@@ -48,7 +45,7 @@ const Quiz = () => {
 
   const submitQuiz = async (e) => {
     e.preventDefault()
-    const {id, authorId} = params
+    const {id} = params
     const data = {
       quizId: id,
       username: name,
@@ -140,66 +137,18 @@ const Quiz = () => {
               <div className='card-body'>
               <h5>{ques.questionText}</h5>
                 <div className='ps-4'>
+                {ques.options.map((option)=>{
                   <div className='form-check'>
                     <input
                       className='form-check-input'
                       type='radio'
                       name='option'
-                      id={ques.options[0].optionId}
-                      value={ques.options[0].optionText}
+                      id={option.optionId}
+                      value={option.optionText}
                     />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[0].optionId}
-                    >
-                      {ques.options[0].optionText}
-                    </label>
+                    <label className='form-check-label' htmlFor={ques.options[0].optionId}>{ques.options[0].optionText} </label>
                   </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[1].optionId}
-                      value={ques.options[1].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[1].optionId}
-                    >
-                      {ques.options[1].optionText}
-                    </label>
-                  </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[2].optionId}
-                      value={ques.options[2].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[2].optionId}
-                    >
-                      {ques.options[2].optionText}
-                    </label>
-                  </div>
-                  <div className='form-check'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='option'
-                      id={ques.options[3].optionText}
-                      value={ques.options[3].optionText}
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor={ques.options[3].optionId}
-                    >
-                      {ques.options[3].optionText}
-                    </label>
-                  </div>
+                })}
                 </div>
               </div>
             </div>
