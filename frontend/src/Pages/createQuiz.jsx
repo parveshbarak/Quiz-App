@@ -65,7 +65,16 @@ const CreateQuiz = () => {
           flag = true;
         }
     });
-    if(flag) return ;
+    if(flag) return false;
+    if(questions.questionText.length === 0){
+       toast.error(`Question can not be empty`);
+       return false;
+    }
+    if(questions.correctans.length === 0){
+      toast.error(`Please select correct answer`);
+      return false;
+    }
+
     setQues([...ques, questions])
     setQuesText('')
     setOption1('')
@@ -74,11 +83,14 @@ const CreateQuiz = () => {
     setOption4('')
     setOption5('')
     toast.success('Question added')
+    return true;
   }
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    addHandler(e)
+   if(addHandler(e) === false){
+       return;
+   }
     const data = {
       title,
       description,
@@ -224,7 +236,6 @@ const CreateQuiz = () => {
                     onChange={(e) => setOption4(e.target.value)}
                   />
                 </div>
-                <label htmlFor='select-ans'>Select Correct Answer</label>
                 <select
                   className='form-select mb-3'
                   aria-label='Default select example'
@@ -232,6 +243,7 @@ const CreateQuiz = () => {
                   id = 'select-ans'
                   onChange={(e) => setOption5(e.target.value)}
                 >
+                  <option value='' disabled selected hidden >Choose correct answer</option>
                   <option value='option1'>{option1}</option>
                   <option value='option2'>{option2}</option>
                   <option value='option3'>{option3}</option>
